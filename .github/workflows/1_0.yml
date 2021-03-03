@@ -1,18 +1,18 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: fruit_pet_bookshop_jxnc
+name: "1_0"
 
 on:
     workflow_dispatch:
     schedule:
-        - cron: '5 4,10,22 * * *'
+        - cron: '0 17 * * *'
     watch:
         types: started
     repository_dispatch:
-        types: fruit_pet_bookshop_jxnc
+        types: "1_0"
 jobs:
-    jd_fruit:
+    jd_syj:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
@@ -33,25 +33,22 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: '运行 【东东农场】'
+            - name: '运行 【十元街】'
               run: |
-                  node jd_fruit.js
+                  node jd_syj.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG }}
                   PUSH_KEY: ${{ secrets.PUSH_KEY }}
                   BARK_PUSH: ${{ secrets.BARK_PUSH }}
-                  FRUITSHARECODES: ${{ secrets.FRUITSHARECODES }}
-                  FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD }}
                   TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
                   TG_USER_ID: ${{ secrets.TG_USER_ID }}
-                  FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL }}
                   BARK_SOUND: ${{ secrets.BARK_SOUND }}
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-    jd_pet:
+    jd_kd:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
@@ -72,47 +69,9 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: '运行 【东东萌宠】'
+            - name: '运行 【京东快递】'
               run: |
-                  node jd_pet.js
-              env:
-                  JD_COOKIE: ${{ secrets.JD_COOKIE }}
-                  JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-                  JD_DEBUG: ${{ secrets.JD_DEBUG }}
-                  PUSH_KEY: ${{ secrets.PUSH_KEY }}
-                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
-                  PETSHARECODES: ${{ secrets.PETSHARECODES }}
-                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-                  TG_USER_ID: ${{ secrets.TG_USER_ID }}
-                  PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL }}
-                  BARK_SOUND: ${{ secrets.BARK_SOUND }}
-                  DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-                  DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-                  IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-    jd_bookshop:
-        runs-on: ubuntu-latest
-        if: github.event.repository.owner.id == github.event.sender.id
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Cache node_modules
-              uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
-              env:
-                  cache-name: cache-node-modules
-              with:
-                  path: node_modules
-                  key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
-            - name: npm install
-              run: |
-                  npm install
-            - name: '运行 【口袋书店】'
-              run: |
-                  node jd_bookshop.js
+                  node jd_kd.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
@@ -125,8 +84,8 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-                  JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
-    jd_beauty:
+                  JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}                                 
+    jd_jdzz:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
@@ -147,9 +106,9 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: '运行 【美丽研究院】'
+            - name: '运行 【京东赚赚】'
               run: |
-                  node jd_beauty.js
+                  node jd_jdzz.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
@@ -163,7 +122,7 @@ jobs:
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
                   JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
-    jd_nzmh:
+    jd_cash:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
@@ -184,9 +143,9 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: '运行 【女装盲盒抽京豆】'
+            - name: '运行 【签到领现金】'
               run: |
-                  node jd_nzmh.js
+                  node jd_cash.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
@@ -200,7 +159,7 @@ jobs:
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
                   JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
-    jd_cfd:
+    jx_sign:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
@@ -221,46 +180,9 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: '运行 【京喜财富岛】'
+            - name: '运行 【京喜app签到】'
               run: |
-                  node jd_cfd.js
-              env:
-                  JD_COOKIE: ${{ secrets.JD_COOKIE }}
-                  JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
-                  JD_DEBUG: ${{ secrets.JD_DEBUG }}
-                  PUSH_KEY: ${{ secrets.PUSH_KEY }}
-                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
-                  BARK_SOUND: ${{ secrets.BARK_SOUND }}
-                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-                  TG_USER_ID: ${{ secrets.TG_USER_ID }}
-                  DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-                  DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-                  IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-                  JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
-    jd_firecrackers:
-        runs-on: ubuntu-latest
-        if: github.event.repository.owner.id == github.event.sender.id
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Cache node_modules
-              uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
-              env:
-                  cache-name: cache-node-modules
-              with:
-                  path: node_modules
-                  key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
-            - name: npm install
-              run: |
-                  npm install
-            - name: '运行 【她的节享京豆】'
-              run: |
-                  node jd_firecrackers.js
+                  node jx_sign.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
